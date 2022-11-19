@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        {{#each artworks}}
+        <div class="col-3">
+            <img style="width:100%" src="https://www.artic.edu/iiif/2/{{image_id}}/full/843,/0/default.jpg" alt="">
+            <p>{{title}}</p>
+            <p>{{artist_title}}</p>
+            <a href="/artworks/details/{{id}}">More details</a>
+        </div>
+        {{/each}}
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {{#paginate pagination type="previous"}}
+            <li {{#if disabled}}class="page-item disabled" {{/if}}><a class="page-link" href="{{n}}">Prev</a></li>
+            {{/paginate}}
+
+            {{#paginate pagination type="middle" limit="5"}}
+            <li {{#if active}}class="page-item active" {{/if}}><a class="page-link" href="{{n}}">{{n}}</a></li>
+            {{/paginate}}
+
+            {{#paginate pagination type="next"}}
+            <li {{#if disabled}}class="page-item disabled" {{/if}}><a class="page-link" href="{{n}}">Next</a></li>
+            {{/paginate}}
+        </ul>
+    </nav>
+</div>
