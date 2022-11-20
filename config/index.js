@@ -27,7 +27,7 @@ const MongoStore = require("connect-mongo");
 
 // Connects the mongo uri to maintain the same naming structure
 const MONGO_URI =
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/starter-code";
+  process.env.MONGODB_URI || "mongodb://localhost/chicago-art";
 
 // Middleware configuration
 module.exports = (app) => {

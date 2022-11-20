@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        {{#each artists}}
+        <div class="col-3">
+            <div class="card-deck"></div>
+            <div class="card my-3" style="width:100%">
+                <a class="link-to-details" href="/artworks/details/{{id}}">
+                    <img class="card-img-top" src="https://www.artic.edu/iiif/2/{{image_id}}/full/843,/0/default.jpg"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text"><small class="text-muted">{{artist_title}}</small></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        {{#paginate pagination type="previous"}}
+        <li {{#if disabled}}class="page-item disabled" {{/if}}><a class="page-link" href="{{n}}">Prev</a></li>
+        {{/paginate}}
+
+        {{#paginate pagination type="middle" limit="5"}}
+        <li {{#if active}}class="page-item active" {{/if}}><a class="page-link" href="{{n}}">{{n}}</a></li>
+        {{/paginate}}
+
+        {{#paginate pagination type="next"}}
+        <li {{#if disabled}}class="page-item disabled" {{/if}}><a class="page-link" href="{{n}}">Next</a></li>
+        {{/paginate}}
+    </ul>
+</nav>
+</div>
