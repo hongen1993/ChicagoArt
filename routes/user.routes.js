@@ -4,22 +4,15 @@ const UserModel = require('../models/User.model');
 
 const router = require('express').Router();
 
-router.get('/', roleValidation(USER), (req, res) => {
-    // const user = req.session.user;
-    res.render('user/index', req.session.user);
-});
+router.get("/edit-profile", rolesValidation([ADMIN, USER]), (req, res, next) => {
+    const userProfileId = req.session.currentUser._id;
 
-router.get('/me', (req, res) => {
-    const { user } = req.session;
-    UserModel.findById(user._id)
+    UserModel
+        .findById(userProfileId)
         .then((user) => {
-            res.render('user/index');
+            res.render('user/edit', { user });
         })
         .catch(next);
-});
-
-router.get('/admin', rolesValidation(ADMIN), (req, res) => {
-    res.render('user/admin', req.session.user);
 });
 
 module.exports = router;

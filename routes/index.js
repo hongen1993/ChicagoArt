@@ -9,6 +9,4 @@ module.exports = app => {
     const artworksRoutes = require("./artworks.routes");
     app.use("/artworks", artworksRoutes);
 
-    const artistsRoutes = require('./artists.routes')
-    app.use('/artists', artistsRoutes)
 }

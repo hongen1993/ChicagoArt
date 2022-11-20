@@ -6,6 +6,15 @@ Handlebars.registerHelper('paginate', require('handlebars-paginate'));
 /**
  * GET
  */
+
+router.get('/categories', (req, res, next) => {
+    const { categories } = req.params
+    axios
+        .get(`https://api.artic.edu/api/v1/artwork-types`)
+        .res.render('/', categories)
+        .catch(next)
+})
+
 router.get("/:page", (req, res, next) => {
     const { page } = req.params;
     axios
@@ -29,6 +38,7 @@ router.get("/details/:id", (req, res, next) => {
         .catch(next);
 });
 
+
 /**
  * POST
  */
@@ -37,7 +47,7 @@ router.post("/search", (req, res, next) => {
     const { searchArtwork } = req.body;
 
     axios
-        .get(`https://api.artic.edu/api/v1/artworks/search?q=${searchArtwork}`)
+        .get(`https://api.artic.edu/api/v1/artworks/search?q=${searchArtwork}&fields=id,title,image_id,artist_title`)
         .then((responseArtworks) => {
             const artworks = responseArtworks.data.data;
             res.render("artworks/search", { artworks });

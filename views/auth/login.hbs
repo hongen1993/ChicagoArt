@@ -2,8 +2,8 @@
   <h2>Log In</h2>
   <form action="/auth/login" method="POST">
 
-    <label> Username
-      <input type="text" name="username" placeholder="Your username" />
+    <label> Email
+      <input type="text" name="email" placeholder="Your email" />
     </label>
 
     <label> Password
@@ -11,10 +11,10 @@
     </label>
 
     <button type="submit">Log In</button>
-
-
     {{#if errorMessage}}
     <p class="error">{{errorMessage}}</p>
     {{/if}}
   </form>
+  <p>Already have an account?<a href="/auth/signup" class="nav-item nav-link mr-3">Sign up</a></p>
+
 </div>

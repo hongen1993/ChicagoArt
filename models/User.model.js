@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
+const { ENUM_ROLES, USER } = require('../const/user.const');
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema(
   {
     username: {
@@ -20,13 +20,22 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    interests: {
+      type: String
+    },
+    role: {
+      type: String,
+      enum: ENUM_ROLES,
+      trim: true,
+      default: USER
+    }
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
+    versionKey: false
   }
 );
 
-const User = model("User", userSchema);
+const UserModel = model("User", userSchema);
 
-module.exports = User;
+module.exports = UserModel;
