@@ -6,7 +6,7 @@ Handlebars.registerHelper('paginate', require('handlebars-paginate'));
 router.get("/:page", (req, res, next) => {
     const { page } = req.params;
     axios
-        .get(`https://api.artic.edu/api/v1/artworks?page=${page}&limit=40`)
+        .get(`https://api.artic.edu/api/v1/artworks?page=${page}&limit=20`)
         .then((responseArtworks) => {
             const pagination = responseArtworks.data.pagination
             const artworks = responseArtworks.data.data;

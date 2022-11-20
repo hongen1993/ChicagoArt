@@ -1,4 +1,9 @@
-<p>{{title}}</p>
-<p>{{artist_title}}</p>
-<img style="width:100%" src="https://www.artic.edu/iiif/2/{{image_id}}/full/843,/0/default.jpg" alt="">
-<p>{{alt_text}}</p>
+<h5>{{title}}</h5>
+<div class="card mb-3">
+    <img class="card-img-top" src="https://www.artic.edu/iiif/2/{{image_id}}/full/843,/0/default.jpg" alt="{{title}}">
+    <div class="card-body">
+        <h5 class="card-title">Artist:{{artist_title}}</h5>
+        <p class="card-text">{{thumbnail.alt_text}}</p>
+        {{!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+    </div>
+</div>

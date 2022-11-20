@@ -1,24 +1,25 @@
-<div id="form">
-  <h2>Sign Up</h2>
-  <form action="/auth/signup" method="POST">
-
-    <label> Username
-      <input type="text" name="username" placeholder="Your username" />
-    </label>
-
-    <label> Email
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
-
-    <label> Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
-
-    <button type="submit">Sign Up</button>
-
-
-    {{#if errorMessage}}
+<div class="container">
+  <div class="content">
+    <img src="https://res.cloudinary.com/debbsefe/image/upload/f_auto,c_fill,dpr_auto,e_grayscale/image_fz7n7w.webp"
+      alt="header-image" class="cld-responsive">
+    <h1 class="form-title">Sign up</h1>
+    <form action="/auth/signup" method="POST">
+      <label> Username
+        <input type="username" name="username" />
+      </label>
+      <label> Email
+        <input type="email" name="email" />
+      </label>
+      <label> Telephone number
+        <input type="number" name="number" />
+      </label>
+      <label> Password
+        <input type="password" name="password" />
+      </label>
+      <button type="button">Submit</button>
+      {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
+      {{/if}}
+    </form>
+  </div>
 </div>
