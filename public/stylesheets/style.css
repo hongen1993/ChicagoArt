@@ -7,6 +7,12 @@ h1 {
 }
 
 .link-to-details {
+  color: black;
+  text-decoration: none;
+}
+
+.link-to-details:hover {
+  color: black;
   text-decoration: none;
 }
 
@@ -185,31 +191,161 @@ h1 {
   margin-top: 10px;
 }
 
-@media (min-width: 1200px) {
-  .form-inline .input-group {
-    width: 300px;
-    margin-left: 30px;
-  }
+.card-img-overlay {
+  font-size: 1.5em;
+  color: rgba(0, 0, 0, 0);
 }
 
-@media (max-width: 768px) {
-  .navbar .dropdown-menu.login-form {
-    width: 100%;
-    padding: 10px 15px;
-    background: transparent;
-    border: none;
-  }
+.card-img-overlay:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+}
 
-  .navbar .form-inline {
-    display: block;
-  }
+.button-tag {
+  display: block;
+  border: 1px solid #9d9d9d;
+  color: #a71c15;
+  text-align: center;
+  padding: .5em;
+  margin: 1em 0;
+  text-decoration: none;
+}
 
-  .navbar .input-group {
-    width: 100%;
-  }
+.granatelink:hover {
+  color: #a71c15;
+}
 
-  .navbar .navbar-nav .btn-primary,
-  .navbar .navbar-nav .btn-primary:active {
-    display: block;
-  }
+.grey {
+  color: #9d9d9d
+}
+
+.granate {
+  color: #a71c15
+}
+
+/* Comment artwork */
+
+.be-comment-block {
+  margin-bottom: 50px !important;
+  border: 1px solid #edeff2;
+  border-radius: 2px;
+  padding: 50px 70px;
+  border: 1px solid #ffffff;
+}
+
+.comments-title {
+  font-size: 16px;
+  color: #262626;
+  margin-bottom: 15px;
+  font-family: 'Conv_helveticaneuecyr-bold';
+}
+
+.be-img-comment {
+  width: 60px;
+  height: 60px;
+  float: left;
+  margin-bottom: 15px;
+}
+
+.be-ava-comment {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.be-comment-content {
+  margin-left: 80px;
+}
+
+.be-comment-content span {
+  display: inline-block;
+  width: 49%;
+  margin-bottom: 15px;
+}
+
+.be-comment-name {
+  font-size: 13px;
+  font-family: 'Conv_helveticaneuecyr-bold';
+}
+
+.be-comment-content a {
+  color: #383b43;
+}
+
+.be-comment-content span {
+  display: inline-block;
+  width: 49%;
+  margin-bottom: 15px;
+}
+
+.be-comment-time {
+  text-align: right;
+}
+
+.be-comment-time {
+  font-size: 11px;
+  color: #b4b7c1;
+}
+
+.be-comment-text {
+  font-size: 13px;
+  line-height: 18px;
+  color: #7a8192;
+  display: block;
+  background: #f6f6f7;
+  border: 1px solid #edeff2;
+  padding: 15px 20px 20px 20px;
+}
+
+.form-group.fl_icon .icon {
+  position: absolute;
+  top: 1px;
+  left: 16px;
+  width: 48px;
+  height: 48px;
+  background: #f6f6f7;
+  color: #b5b8c2;
+  text-align: center;
+  padding-top: 1.2em;
+  line-height: 50px;
+  -webkit-border-top-left-radius: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  -moz-border-radius-topleft: 2px;
+  -moz-border-radius-bottomleft: 2px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.form-group .form-input {
+  font-size: 13px;
+  line-height: 50px;
+  font-weight: 400;
+  color: #7a8192;
+  width: 100%;
+  height: 50px;
+  padding-left: 60px;
+  padding-right: 20px;
+  border: 1px solid #edeff2;
+  border-radius: 3px;
+}
+
+.form-group .fl_icon .form-input {
+  padding-left: 70px;
+}
+
+.form-group textarea.form-input {
+  height: 150px;
+  padding-left: 20px;
+}
+
+.form-input:focus {
+  outline: none;
+  color: #7a8192;
+  box-shadow: 10px 5px 5px #b4b7c1;
+}
+
+form .form-block a {
+  float: right;
+  color: #7a8192;
+  font-size: 14px
 }
