@@ -1,12 +1,12 @@
 module.exports = app => {
 
-    const indexRouter = require("./index.routes");
-    app.use("/", indexRouter);
+    app.use("/", require("./index.routes"));
 
-    const authRouter = require("./auth.routes");
-    app.use("/auth", authRouter);
+    app.use("/auth", require("./auth.routes"));
 
-    const artworksRoutes = require("./artworks.routes");
-    app.use("/artworks", artworksRoutes);
+    app.use("/artworks", require("./artworks.routes"));
 
+    app.use("/user", require("./user.routes"));
+
+    app.use("/comment", require("./comment.routes"));
 }

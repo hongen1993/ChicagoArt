@@ -1,4 +1,4 @@
-<div class="card background-img mt-2 mx-2">
+<div class="card background-img padding-top mx-2">
     <img class="card-img" src="https://www.artic.edu/iiif/2/{{image_id}}/full/843,/0/default.jpg" alt="{{title}}">
     <div class="card-img-overlay d-flex flex-column justify-content-end">
         <p class="card-title">{{title}}</p>
@@ -46,46 +46,6 @@
     <div class="be-comment">
         <div class="be-img-comment">
             <a href="blog-detail-2.html">
-                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
-            </a>
-        </div>
-        <div class="be-comment-content">
-
-            <span class="be-comment-name">
-                <a href="blog-detail-2.html">Ravi Sah</a>
-            </span>
-            <span class="be-comment-time">
-                <i class="fa fa-clock-o"></i>
-                Sep 27, 2022 at 7:03pm
-            </span>
-
-            <p class="be-comment-text">
-                This is so beautiful.Great piece of art. I appreciate the details and specifics.
-            </p>
-        </div>
-    </div>
-    <div class="be-comment">
-        <div class="be-img-comment">
-            <a href="blog-detail-2.html">
-                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="be-ava-comment">
-            </a>
-        </div>
-        <div class="be-comment-content">
-            <span class="be-comment-name">
-                <a href="blog-detail-2.html">Phoenix, the Creative Studio</a>
-            </span>
-            <span class="be-comment-time">
-                <i class="fa fa-clock-o"></i>
-                Oct 27, 2022 at 2:14pm
-            </span>
-            <p class="be-comment-text">
-                I was immediately drawn to this piece.
-            </p>
-        </div>
-    </div>
-    <div class="be-comment">
-        <div class="be-img-comment">
-            <a href="blog-detail-2.html">
                 <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="be-ava-comment">
             </a>
         </div>
@@ -102,7 +62,8 @@
             </p>
         </div>
     </div> --}}
-    <form class="form-block mt-5">
+    {{#if userNav}}
+    <form class="form-block mt-5" id="form-comment" action="/comment/{{id}}" method="post">
         <div class="row">
             {{!-- <div class=" col-sm-6">
                 <div class="form-group fl_icon">
@@ -118,10 +79,12 @@
             </div> --}}
             <div class="col-12">
                 <div class="form-group">
-                    <textarea class="form-input" required="" placeholder="Your text"></textarea>
+                    <textarea class="form-input" required="" placeholder="Your text" name="description"></textarea>
                 </div>
             </div>
+
         </div>
-        <a class="btn btn-light">submit</a>
+        <button class="btn btn-light" type="submit">Submit</button>
     </form>
+    {{/if}}
 </div>

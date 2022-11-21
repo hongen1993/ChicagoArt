@@ -1,0 +1,22 @@
+<div class="container padding-top">
+    <h1>Community</h1>
+    <div class="row">
+        {{#each usersCommunity}}
+        <div class="col-lg-3 col-mb-12">
+            <div class="card-deck"></div>
+            <div class="card my-3" style="width:100%">
+                <a class="link-to-profile" href="/user/profile/{{id}}">
+                    <div style="height: 200px;overflow: hidden;"><img class="card-img-top" src="{{imageUrl}}"
+                            alt="Card image cap">
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{username}}</h5>
+                        <p class="card-text"><small class="text-muted">{{email}}</small></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

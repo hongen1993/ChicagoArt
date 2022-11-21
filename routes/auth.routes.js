@@ -9,6 +9,7 @@ const UserModel = require("../models/User.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
+const fileUploader = require('../config/cloudinary.config');
 // --------------------------------------- GET ------------------------------------------//
 
 router.get("/signup", isLoggedOut, (req, res) => { res.render("auth/signup"); });
@@ -29,7 +30,7 @@ router.get("/login", isLoggedOut, (req, res) => {
 
 // --------------------------------------- POST ------------------------------------------//
 
-router.post("/signup", isLoggedOut, (req, res) => {
+router.post("/signup", isLoggedOut, fileUploader.single('image'), (req, res) => {
   const { username, email, password } = req.body;
 
   if (username === "" || email === "" || password === "") {
@@ -54,7 +55,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
     .then((salt) => bcrypt.hash(password, salt))
     .then((hashedPassword) => {
       // Create a user and save it in the database
-      return UserModel.create({ username, email, password: hashedPassword });
+      return UserModel.create({ username, email, password: hashedPassword, imageUrl: req.file.path });
     })
     .then((user) => {
       res.redirect("/auth/login");

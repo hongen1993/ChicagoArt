@@ -23,12 +23,12 @@ h1 {
 
 .hero {
   height: 100vh;
-  background-image: url(/images/banner.jpg);
-  background-size: 100% 100%;
+  /* background-image: url(/images/banner.jpg);
+  background-size: 100% 100%; */
 }
 
-.margin-top {
-  padding-top: 150px;
+.padding-top {
+  padding-top: 99px;
 }
 
 .form-control {
@@ -42,6 +42,21 @@ h1 {
   padding-right: 16px;
   border-bottom: 1px solid #dfe3e8;
   border-radius: 0;
+  position: fixed;
+  width: 100vw;
+  z-index: 100;
+  /* box-shadow: 8px 4px 4px #b4b7c1; */
+}
+
+.navbar-index {
+  background: #fff;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-bottom: 1px solid #dfe3e8;
+  border-radius: 0;
+  position: fixed;
+  width: 100vw;
+  z-index: 100;
 }
 
 .nav-link img {
@@ -56,6 +71,8 @@ h1 {
 .navbar .navbar-brand {
   padding-left: 0;
   font-size: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
   padding-right: 50px;
 }
 
@@ -73,13 +90,24 @@ h1 {
 
 .navbar a,
 .navbar a:active {
-  color: #888;
-  font-size: 15px;
+  color: black;
+  font-size: 18px;
   background: transparent;
+
+}
+
+#search {
+  background-color: transparent;
+  border-color: black;
+  color: black;
+}
+
+#search::placeholder {
+  color: black;
 }
 
 .search-form {
-  padding: 14px 0 0 27.5rem;
+  padding: 14px 0 0 35rem;
 }
 
 .search-box {
@@ -105,7 +133,7 @@ h1 {
 }
 
 .search-box i {
-  color: #a0a5b1;
+  color: black;
   font-size: 19px;
 }
 
@@ -197,6 +225,7 @@ h1 {
 }
 
 .card-img-overlay {
+  top: 100px;
   padding: 0 0 1.5em 2em;
   font-size: 1.7em;
   color: rgba(0, 0, 0, 0);
