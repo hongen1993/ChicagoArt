@@ -1,27 +1,20 @@
 const router = require('express').Router();
 const axios = require('axios');
-const Handlebars = require('hbs');
-Handlebars.registerHelper('paginate', require('handlebars-paginate'));
+// const handlebars = require('hbs');
+// handlebars.registerHelper('paginate', require('handlebars-paginate'));
 
-/**
- * GET
- */
+const ChicagoAPI = require('../connect/chicago.connect')
+const chicagoAPI = new ChicagoAPI()
 
-router.get('/categories', (req, res, next) => {
-    const { categories } = req.params
-    axios
-        .get(`https://api.artic.edu/api/v1/artwork-types`)
-        .res.render('/', categories)
-        .catch(next)
-})
+//-----------------------------------------------------------------------------GET--------------------------------------------------------------------------------//
 
 router.get("/:page", (req, res, next) => {
     const { page } = req.params;
-    axios
-        .get(`https://api.artic.edu/api/v1/artworks?page=${page}&limit=20`)
+    chicagoAPI
+        .getArtworks(page)
         .then((responseArtworks) => {
-            const pagination = responseArtworks.data.pagination
-            const artworks = responseArtworks.data.data;
+            const pagination = responseArtworks.pagination
+            const artworks = responseArtworks.data;
             res.render("artworks/list", { artworks, pagination: { page: pagination.current_page, pageCount: pagination.total_pages } });
         })
         .catch(next);
@@ -29,27 +22,23 @@ router.get("/:page", (req, res, next) => {
 
 router.get("/details/:id", (req, res, next) => {
     const { id } = req.params;
-    axios
-        .get(`https://api.artic.edu/api/v1/artworks/${id}`)
+    chicagoAPI
+        .getArtwork(id)
         .then((responseArtwork) => {
-            const artwork = responseArtwork.data.data;
+            const artwork = responseArtwork.data;
             res.render("artworks/art-details", artwork);
         })
         .catch(next);
 });
 
-
-/**
- * POST
- */
+//-----------------------------------------------------------------------------POST------------------------------------------------------------------------------//
 
 router.post("/search", (req, res, next) => {
     const { searchArtwork } = req.body;
-
-    axios
-        .get(`https://api.artic.edu/api/v1/artworks/search?q=${searchArtwork}&fields=id,title,image_id,artist_title`)
-        .then((responseArtworks) => {
-            const artworks = responseArtworks.data.data;
+    chicagoAPI
+        .searchArtworks(searchArtwork)
+        .then((searchResults) => {
+            const artworks = searchResults.data;
             res.render("artworks/search", { artworks });
         })
         .catch(next);

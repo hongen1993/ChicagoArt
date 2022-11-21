@@ -1,19 +1,7 @@
 <div class="container">
     <div class="row">
         {{#each artworks}}
-        <div class="col-3">
-            <div class="card-deck"></div>
-            <div class="card my-3" style="width:100%">
-                <a class="link-to-details" href="/artworks/details/{{id}}">
-                    <img class="card-img-top" src="https://www.artic.edu/iiif/2/{{image_id}}/full/843,/0/default.jpg"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{title}}</h5>
-                        <p class="card-text"><small class="text-muted">{{artist_title}}</small></p>
-                    </div>
-                </a>
-            </div>
-        </div>
+        {{> artworkCard this}}
         {{/each}}
     </div>
 </div>

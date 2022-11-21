@@ -1,5 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -191,14 +192,23 @@ h1 {
   margin-top: 10px;
 }
 
+.card {
+  background-color: rgba(237, 239, 242, 0.4)
+}
+
 .card-img-overlay {
-  font-size: 1.5em;
+  padding: 0 0 1.5em 2em;
+  font-size: 1.7em;
   color: rgba(0, 0, 0, 0);
 }
 
 .card-img-overlay:hover {
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
+}
+
+.background-img img {
+  padding: 1em;
 }
 
 .button-tag {
@@ -349,3 +359,34 @@ form .form-block a {
   color: #7a8192;
   font-size: 14px
 }
+
+.bg-image-vertical {
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 100%;
+}
+
+.card-login {
+  background-color: rgba(255, 255, 255, .2);
+  border-radius: 15px;
+}
+
+@media (min-width: 1025px) {
+  .h-custom-2 {
+    height: 100%;
+  }
+}
+
+/* .gradient-custom-3 {
+  background: #84fab0;
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+  background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+} */
+
+/* .gradient-custom-4 {
+  background: #84fab0;
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+} */

@@ -9,14 +9,29 @@ const UserModel = require("../models/User.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-// GET /auth/signup
+// --------------------------------------- GET ------------------------------------------//
+
 router.get("/signup", isLoggedOut, (req, res) => { res.render("auth/signup"); });
 
-// POST /auth/signup
+router.get("/logout", isLoggedIn, (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      res.status(500).render("auth/logout", { errorMessage: err.message });
+      return;
+    }
+    res.redirect("/");
+  });
+});
+
+router.get("/login", isLoggedOut, (req, res) => {
+  res.render("auth/login");
+});
+
+// --------------------------------------- POST ------------------------------------------//
+
 router.post("/signup", isLoggedOut, (req, res) => {
   const { username, email, password } = req.body;
 
-  // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
     res.status(400).render("auth/signup", {
       errorMessage:
@@ -26,9 +41,9 @@ router.post("/signup", isLoggedOut, (req, res) => {
     return;
   }
 
-  if (password.length < 6) {
+  if (password.length < 4) {
     res.status(400).render("auth/signup", {
-      errorMessage: "Your password needs to be at least 6 characters long.",
+      errorMessage: "Your password needs to be at least 4 characters long.",
     });
 
     return;
@@ -58,12 +73,6 @@ router.post("/signup", isLoggedOut, (req, res) => {
     });
 });
 
-// GET /auth/login
-router.get("/login", isLoggedOut, (req, res) => {
-  res.render("auth/login");
-});
-
-// POST /auth/login
 router.post("/login", isLoggedOut, (req, res, next) => {
   const { email, password } = req.body;
 
@@ -77,8 +86,6 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     return;
   }
 
-  // Here we use the same logic as above
-  // - either length based parameters or we check the strength of a password
   if (password.length < 4) {
     return res.status(400).render("auth/login", {
       errorMessage: "Your password needs to be at least 4 characters long.",
@@ -114,21 +121,9 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
           res.redirect("/");
         })
-        .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
+        .catch((err) => next(err));
     })
     .catch((err) => next(err));
-});
-
-// GET /auth/logout
-router.get("/logout", isLoggedIn, (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      res.status(500).render("auth/logout", { errorMessage: err.message });
-      return;
-    }
-
-    res.redirect("/");
-  });
 });
 
 module.exports = router;

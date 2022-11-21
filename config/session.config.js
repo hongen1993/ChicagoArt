@@ -15,12 +15,9 @@ module.exports = (app) => {
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
         maxAge: 60000 * 100
-      }, // ADDED code below !!!
+      },
       store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/chicago-art',
-        // ttl: 60 * 60 * 24
-        // ttl => time to live
-        // ttl: 60 * 60 * 24 // 60sec * 60min * 24h => 1 day
+        mongoUrl: process.env.MONGODB_URI,
       })
     })
   );

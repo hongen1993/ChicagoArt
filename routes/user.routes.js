@@ -4,7 +4,7 @@ const UserModel = require('../models/User.model');
 
 const router = require('express').Router();
 
-router.get("/edit-profile", rolesValidation([ADMIN, USER]), (req, res, next) => {
+router.get("/edit-profile", isLoggedIn, (req, res, next) => {
     const userProfileId = req.session.currentUser._id;
 
     UserModel

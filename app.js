@@ -8,17 +8,17 @@ const hbs = require("hbs");
 
 const app = express();
 
-
 require("./config")(app);
 
 
 require("./config/session.config")(app);
 
-const capitalize = require("./utils/capitalize");
-const projectName = "starter-code";
+hbs.registerPartials('views/partials');
+
+const projectName = "Chicago Art";
 
 
-app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
+app.locals.appTitle = `${projectName}`;
 
 app.use((req, res, next) => {
     app.locals.userNav = !!req.session.currentUser;
