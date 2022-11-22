@@ -15,7 +15,7 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg bg-transparent px-5">
+    <nav class="navbar navbar-expand-lg bg-transparent px-5 fixed-top">
       <a class="navbar-brand d-flex align-items-center" href="/">
         <img src="/images/chicago-arts.psd.png" alt="Logo" width="85" height="85" class="d-inline-block align-text-top">
       </a> <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -28,16 +28,6 @@
           <a href="/artworks/1" class="nav-item nav-link">Artworks</a>
           <a href="#" class="nav-item nav-link">Contact</a>
           <a href="/user/community" class="nav-item nav-link">Community</a>
-
-          {{!-- <div class="nav-item dropdown">
-            <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">Services</a>
-            <div class="dropdown-menu">
-              <a href="#" class="dropdown-item">Web Design</a>
-              <a href="#" class="dropdown-item">Web Development</a>
-              <a href="#" class="dropdown-item">Graphic Design</a>
-              <a href="#" class="dropdown-item">Digital Marketing</a>
-            </div>
-          </div> --}}
         </div>
 
         <div class="navbar-nav ml-auto">
@@ -52,7 +42,27 @@
         </div>
         {{#if userNav}}
         <div class="navbar-nav action-buttons ml-auto">
-          <a href="/auth/logout" class="nav-item nav-link dropdown-toggle mr-3">Logout</a>
+          <button class="navbar-toggler " type="button" data-toggle="collapse" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse mb-2" id="navbar-list-4">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="{{image}}" width="60" height="60" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu navbar-profile" aria-labelledby="navbarDropdownMenuLink">
+                  <p>Chiki{{name}}</p>
+                  <hr class="line">
+                  <a class="dropdown-item" href="/user/profile">Profile</a>
+                  <a class="dropdown-item" href="/user/edit-profile">Configuration</a>
+                  <a class="dropdown-item" href="/auth/logout">Log Out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
         {{else}}
         <div class="navbar-nav action-buttons ml-auto">
@@ -73,6 +83,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
     crossorigin="anonymous"></script>
+  <script src="/js/main.js"></script>
 </body>
 
 </html>

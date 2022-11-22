@@ -1,45 +1,42 @@
-<section class="vh-100 bg-image padding-top" style="background: url('../images/signup-image.jpg') center;">
-  <div class="mask d-flex align-items-center h-100">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body card-login p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+<section class="vh-100 bg-image padding-top hide" style="background: url('../images/institute-chicago.jpg') center;">
+  <div class="container h-75 mt-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-5">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body card-login p-5">
+            <h4 class="text-uppercase text-center mb-4">Create an account</h4>
 
-              <form action="/auth/signup" method="POST" enctype="multipart/form-data">
+            <form action="/auth/signup" method="POST" enctype="multipart/form-data">
 
-                <div class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="username"
-                    REQUIRED />
-                  <label class="form-label" for="form3Example1cg">Username</label>
-                </div>
+              <div class="form-outline mb-1">
+                <input type="text" id="form3Example1cg" class="form-control form-control-md" name="username" REQUIRED />
+                <label class="form-label" for="form3Example1cg">Username</label>
+              </div>
 
-                <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="email" REQUIRED />
-                  <label class="form-label" for="form3Example3cg">Email</label>
-                </div>
-                <div class="form-outline mb-4">
+              <div class="form-outline mb-1">
+                <input type="email" id="form3Example3cg" class="form-control form-control-md" name="email" REQUIRED />
+                <label class="form-label" for="form3Example3cg">Email</label>
+              </div>
+              <div class="form-outline mb-1">
 
-                  <input type="file" class="form-control form-control-lg" name="image" required />
-                  <label class="form-label" for="form3Example3cg">Image</label>
-                </div>
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="password"
-                    REQUIRED />
-                  <label class="form-label" for="form3Example4cg">Password</label>
-                </div>
+                <input type="file" class="form-control form-control-md" name="image" required />
+                <label class="form-label" for="form3Example3cg">Image</label>
+              </div>
+              <div class="form-outline mb-1">
+                <input type="password" id="form3Example4cg" class="form-control form-control-md" name="password"
+                  REQUIRED />
+                <label class="form-label" for="form3Example4cg">Password</label>
+              </div>
 
-                <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-success btn-block btn-lg text-body">Register</button>
-                </div>
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn-block btn-md text-body">Register</button>
+              </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/auth/login"
-                    class=" fw-bold text-body"><u>Login here</u></a></p>
+              <p class="text-center mt-3 mb-0">Have already an account? <a href="/auth/login"
+                  class=" fw-bold text-body"><u>Login here</u></a></p>
 
-              </form>
+            </form>
 
-            </div>
           </div>
         </div>
       </div>
