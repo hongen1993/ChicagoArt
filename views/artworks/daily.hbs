@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row my-5 px-5">
+        <div class="col-6">
+            <div class="card background-img padding-top mx-2">
+                <img class="card-img daily-img"
+                    src="https://www.artic.edu/iiif/2/{{artwork.image_id}}/full/843,/0/default.jpg"
+                    alt="{{artwork.title}}">
+                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                    <p class="card-title">{{artwork.title}}</p>
+                    <p class="card-subtitle mb-2">{{artwork.artist_title}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <p>{{artwork.provenance_text}}</p>
+        </div>
+    </div>
+</div>

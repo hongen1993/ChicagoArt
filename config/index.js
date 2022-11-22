@@ -30,6 +30,7 @@ module.exports = (app) => {
   app.use(express.static(path.join(__dirname, "..", "public")));
 
   handlebars.registerHelper('paginate', require('handlebars-paginate'));
+  handlebars.registerHelper('dateFormat', require('handlebars-dateformat'));
 
   app.use(
     favicon(path.join(__dirname, "..", "public", "images", "favicon.ico"))

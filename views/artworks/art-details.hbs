@@ -1,5 +1,6 @@
 <div class="card background-img padding-top mx-2">
-    <img class="card-img" src="https://www.artic.edu/iiif/2/{{artwork.image_id}}/full/843,/0/default.jpg" alt="{{artwork.title}}">
+    <img class="card-img" src="https://www.artic.edu/iiif/2/{{artwork.image_id}}/full/843,/0/default.jpg"
+        alt="{{artwork.title}}">
     <div class="card-img-overlay d-flex flex-column justify-content-end">
         <p class="card-title">{{artwork.title}}</p>
         <p class="card-subtitle mb-2">{{artwork.artist_title}}</p>
@@ -48,8 +49,8 @@
         {{#each comments}}
         <div class="be-img-comment">
 
-        <img src="{{user.imageUrl}}" alt="" class="be-ava-comment">
-          
+            <img src="{{user.imageUrl}}" alt="" class="be-ava-comment">
+
         </div>
         <div class="be-comment-content">
             <span class="be-comment-name">
@@ -57,14 +58,15 @@
             </span>
             <span class="be-comment-time">
                 <i class="fa fa-clock-o"></i>
-                {{dateFormat}}
+                {{dateFormat createdAt "LLL"}}
+
             </span>
             <p class="be-comment-text">
                 {{description}}
             </p>
         </div>
-         {{/each}}
-    </div> 
+        {{/each}}
+    </div>
     {{/if}}
     {{#if userNav}}
     <form class="form-block mt-5" id="form-comment" action="/comment/{{artwork.id}}" method="post">

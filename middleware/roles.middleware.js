@@ -11,7 +11,7 @@ const rolesValidation = (roles) => (req, res, next) => { // roles -> ['Admin', '
   // } else {
   //   res.render('not-found');
   // }
-  if (req.session.user && roles.includes(req.session.user.role)) {
+  if (req.session.currentUser && roles.includes(req.session.currentUser.role)) {
     next();
   } else {
     res.render('not-found');

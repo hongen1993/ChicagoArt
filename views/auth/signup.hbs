@@ -9,29 +9,31 @@
             <form action="/auth/signup" method="POST" enctype="multipart/form-data">
 
               <div class="form-outline mb-1">
-                <input type="text" id="form3Example1cg" class="form-control form-control-md" name="username" REQUIRED />
-                <label class="form-label" for="form3Example1cg">Username</label>
+                <input type="text" class="form-control form-control-md" name="username" required />
+                <label class="form-label">Username</label>
               </div>
 
               <div class="form-outline mb-1">
-                <input type="email" id="form3Example3cg" class="form-control form-control-md" name="email" REQUIRED />
-                <label class="form-label" for="form3Example3cg">Email</label>
+                <input type="email" class="form-control form-control-md" name="email" required />
+                <label class="form-label">Email</label>
               </div>
-              <div class="form-outline mb-1">
 
+              <div class="form-outline mb-1">
                 <input type="file" class="form-control form-control-md" name="image" required />
-                <label class="form-label" for="form3Example3cg">Image</label>
+                <label class="form-label">Image</label>
               </div>
+
               <div class="form-outline mb-1">
-                <input type="password" id="form3Example4cg" class="form-control form-control-md" name="password"
-                  REQUIRED />
-                <label class="form-label" for="form3Example4cg">Password</label>
+                <input type="password" class="form-control form-control-md" name="password" required />
+                <label class="form-label">Password</label>
               </div>
 
               <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-info btn-block btn-md text-body">Register</button>
               </div>
-
+              {{#if errorMessage}}
+              <p class="error">{{errorMessage}}</p>
+              {{/if}}
               <p class="text-center mt-3 mb-0">Have already an account? <a href="/auth/login"
                   class=" fw-bold text-body"><u>Login here</u></a></p>
 

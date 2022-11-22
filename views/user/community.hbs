@@ -1,5 +1,5 @@
 <div class="container padding-top">
-    <h1>Community</h1>
+    <h2 class="pt-5">Community</h2>
     <div class="row">
         {{#each usersCommunity}}
         <div class="col-lg-3 col-mb-12">
@@ -15,6 +15,12 @@
                         <p class="card-text"><small class="text-muted">{{email}}</small></p>
                     </div>
                 </a>
+                {{#if @root.admin}}
+                <div class="btn-admin-container">
+                    <a class="btn btn-primary btn-admin" href="/user/edit/{{id}}">Edit</a>
+                    <a class="btn btn-danger btn-admin" href="/user/delete/{{id}}">Delete</a>
+                </div>
+                {{/if}}
             </div>
         </div>
         {{/each}}

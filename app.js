@@ -10,7 +10,6 @@ const app = express();
 
 require("./config")(app);
 
-
 require("./config/session.config")(app);
 
 hbs.registerPartials('views/partials');

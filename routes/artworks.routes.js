@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const axios = require('axios');
-// const handlebars = require('hbs');
-// handlebars.registerHelper('paginate', require('handlebars-paginate'));
+const getRandom = require('../utils/randomNumber');
 
 const ChicagoAPI = require('../connect/chicago.connect')
 const chicagoAPI = new ChicagoAPI()
@@ -32,6 +30,23 @@ router.get("/:page", (req, res, next) => {
 //         .catch(next);
 // });
 
+router.get("/details/daily", (req, res, next) => {
+    const randomNumber = getRandom(1, 117673);
+    console.log(randomNumber);
+    chicagoAPI
+        .getArtwork(randomNumber)
+        .then((responseArtwork) => {
+            const artwork = responseArtwork.data;
+            if (artwork) {
+                res.render("artworks/art-details", { artwork });
+            }
+            else {
+                res.redirect('/artworks/details/daily');
+            }
+        })
+        .catch(next);
+});
+
 router.get("/details/:id", (req, res, next) => {
     const { id } = req.params;
     chicagoAPI
@@ -51,6 +66,7 @@ router.get("/details/:id", (req, res, next) => {
         })
         .catch(next);
 });
+
 //-----------------------------------------------------------------------------POST------------------------------------------------------------------------------//
 
 router.post("/search", (req, res, next) => {
