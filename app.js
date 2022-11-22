@@ -23,6 +23,7 @@ app.locals.appTitle = `${projectName}`;
 app.use((req, res, next) => {
     app.locals.userNav = !!req.session.currentUser;
     if (req.session.currentUser) {
+        app.locals.currentUser = req.session.currentUser;
         app.locals.admin = req.session.currentUser.role === "Admin";
     }
     next();

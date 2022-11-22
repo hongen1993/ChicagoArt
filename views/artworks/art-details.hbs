@@ -1,69 +1,73 @@
 <div class="card background-img padding-top mx-2">
-    <img class="card-img" src="https://www.artic.edu/iiif/2/{{image_id}}/full/843,/0/default.jpg" alt="{{title}}">
+    <img class="card-img" src="https://www.artic.edu/iiif/2/{{artwork.image_id}}/full/843,/0/default.jpg" alt="{{artwork.title}}">
     <div class="card-img-overlay d-flex flex-column justify-content-end">
-        <p class="card-title">{{title}}</p>
-        <p class="card-subtitle mb-2">{{artist_title}}</p>
+        <p class="card-title">{{artwork.title}}</p>
+        <p class="card-subtitle mb-2">{{artwork.artist_title}}</p>
     </div>
 </div>
 <div class="row my-5 px-5">
     <div class="col-2 grey">
-        <h5 class="card-title">{{artist_display}}</h5>
+        <h5 class="card-title">{{artwork.artist_display}}</h5>
         <hr>
         <a href="" class="granate granatelink">SEE AUTHOR'S FILE</a>
     </div>
     <div class="col-6 text-center">
-        <h2 class="granate mb-4">{{title}}</h2>
-        {{#if provenance_text}}
-        <p>{{provenance_text}}</p>
+        <h2 class="granate mb-4">{{artwork.title}}</h2>
+        {{#if artwork.provenance_text}}
+        <p>{{artwork.provenance_text}}</p>
         {{else}}
-        <p>{{thumbnail.alt_text}}</p>
+        <p>{{artwork.thumbnail.alt_text}}</p>
         {{/if}}
     </div>
     <div class="col-2">
         <p>Date display</p>
-        <p class="grey">{{date_display}}</p>
+        <p class="grey">{{artwork.date_display}}</p>
         <hr>
         <p>Technique</p>
-        <p class="grey">{{medium_display}}</p>
+        <p class="grey">{{artwork.medium_display}}</p>
         <hr>
         <p>Origin</p>
-        <p class="grey">{{place_of_origin}}</p>
+        <p class="grey">{{artwork.place_of_origin}}</p>
         <hr>
         <p>Dimensions</p>
-        <p class="grey">{{dimensions}}</p>
+        <p class="grey">{{artwork.dimensions}}</p>
 
     </div>
     <div class="col-2 grey">
         <h6>TAGS</h6>
-        {{#each category_titles}}
+        {{#each artwork.category_titles}}
         <a href="" class="button-tag granatelink">{{this}}</a>
         {{/each}}
     </div>
 </div>
 
 <div class="be-comment-block mx-5">
-    {{!-- <h1 class="comments-title">Comments (3)</h1>
+    {{#if comments}}
+    <h1 class="comments-title">Comments ({{comments.length}})</h1>
     <div class="be-comment">
+        {{#each comments}}
         <div class="be-img-comment">
-            <a href="blog-detail-2.html">
-                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="be-ava-comment">
-            </a>
+
+        <img src="{{user.imageUrl}}" alt="" class="be-ava-comment">
+          
         </div>
         <div class="be-comment-content">
             <span class="be-comment-name">
-                <a href="blog-detail-2.html">Cüneyt ŞEN</a>
+                <a href="/user/profile/{{user._id}}">{{user.username}}</a>
             </span>
             <span class="be-comment-time">
                 <i class="fa fa-clock-o"></i>
-                Nov 27, 2022 at 3:14am
+                {{dateFormat}}
             </span>
             <p class="be-comment-text">
-                Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis eleifend lorem non ant
+                {{description}}
             </p>
         </div>
-    </div> --}}
+         {{/each}}
+    </div> 
+    {{/if}}
     {{#if userNav}}
-    <form class="form-block mt-5" id="form-comment" action="/comment/{{id}}" method="post">
+    <form class="form-block mt-5" id="form-comment" action="/comment/{{artwork.id}}" method="post">
         <div class="row">
             {{!-- <div class=" col-sm-6">
                 <div class="form-group fl_icon">

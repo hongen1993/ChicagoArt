@@ -51,13 +51,13 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="{{image}}" width="60" height="60" class="rounded-circle">
+                  <img src="{{currentUser.imageUrl}}" width="60" height="60" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu navbar-profile" aria-labelledby="navbarDropdownMenuLink">
-                  <p>Chiki{{name}}</p>
+                  <p>{{currentUser.username}}</p>
                   <hr class="line">
-                  <a class="dropdown-item" href="/user/profile">Profile</a>
-                  <a class="dropdown-item" href="/user/edit-profile">Configuration</a>
+                  <a class="dropdown-item" href="/user/profile/{{currentUser._id}}">Profile</a>
+                  <a class="dropdown-item" href="/user/edit-profile/{{currentUser._id}}">Configuration</a>
                   <a class="dropdown-item" href="/auth/logout">Log Out</a>
                 </div>
               </li>

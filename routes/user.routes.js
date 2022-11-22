@@ -17,13 +17,13 @@ router.get("/community", isLoggedIn, (req, res, next) => {
         .catch(next);
 });
 
-router.get("/edit-profile", isLoggedIn, (req, res, next) => {
-    const userProfileId = req.session.currentUser._id;
+router.get("/edit-profile/:id", isLoggedIn, (req, res, next) => {
+    const { id } = req.params;
 
     UserModel
-        .findById(userProfileId)
+        .findById(id)
         .then((user) => {
-            res.render('user/edit', { user });
+            res.render('user/edit', user);
         })
         .catch(next);
 });

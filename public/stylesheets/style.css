@@ -66,8 +66,8 @@ h1 {
 
 .nav-link img {
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   margin: -8px 0;
   float: left;
   margin-right: 10px;
@@ -112,7 +112,7 @@ h1 {
 }
 
 .search-form {
-  padding: 14px 0 0 35rem;
+  padding: 14px 0 0 40rem;
 }
 
 .search-box {
@@ -241,7 +241,10 @@ hr.line {
 }
 
 /* Comment artwork */
-
+.be-comment{
+  overflow-y: auto;
+  height: 200px;
+}
 .be-comment-block {
   margin-bottom: 50px !important;
   border: 1px solid #edeff2;
@@ -254,7 +257,6 @@ hr.line {
   font-size: 16px;
   color: #262626;
   margin-bottom: 15px;
-  font-family: 'Conv_helveticaneuecyr-bold';
 }
 
 .be-img-comment {
@@ -282,7 +284,6 @@ hr.line {
 
 .be-comment-name {
   font-size: 13px;
-  font-family: 'Conv_helveticaneuecyr-bold';
 }
 
 .be-comment-content a {
