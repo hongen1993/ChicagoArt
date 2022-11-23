@@ -7,6 +7,34 @@ const chicagoAPI = new ChicagoAPI()
 const CommentModel = require('../models/Comment.model');
 //-----------------------------------------------------------------------------GET--------------------------------------------------------------------------------//
 
+router.get("/details/daily", (req, res, next) => {
+    const randomNumber = getRandom(1, 117673);
+    chicagoAPI
+        .getArtwork(randomNumber)
+        .then((responseArtwork) => {
+            const artwork = responseArtwork.data;
+            res.render("artworks/daily", { artwork });
+        })
+        .catch((err) => {
+            if (err.response) {
+                res.redirect('/artworks/details/daily');
+            } else {
+                console.error(err);
+            }
+        })
+});
+
+router.get("/search", (req, res, next) => {
+    const { searchArtwork } = req.params;
+    chicagoAPI
+        .searchArtworks(searchArtwork)
+        .then((searchResults) => {
+            const artworks = searchResults.data;
+            res.render("artworks/search", { artworks });
+        })
+        .catch(next);
+});
+
 router.get("/:page", (req, res, next) => {
     const { page } = req.params;
     chicagoAPI
@@ -17,35 +45,6 @@ router.get("/:page", (req, res, next) => {
             res.render("artworks/list", { artworks, pagination: { page: pagination.current_page, pageCount: pagination.total_pages } });
         })
         .catch(next);
-});
-
-// router.get("/details/:id", (req, res, next) => {
-//     const { id } = req.params;
-//     chicagoAPI
-//         .getArtwork(id)
-//         .then((responseArtwork) => {
-//             const artwork = responseArtwork.data;
-//             res.render("artworks/art-details", artwork);
-//         })
-//         .catch(next);
-// });
-
-router.get("/details/daily", (req, res, next) => {
-    const randomNumber = getRandom(1, 117673);
-    console.log(randomNumber);
-    chicagoAPI
-        .getArtwork(randomNumber)
-        .then((responseArtwork) => {
-            const artwork = responseArtwork.data;
-            res.render("artworks/daily", { artwork });
-        })
-        .catch((err) => {
-            return err
-        })
-        .then((err) => {
-            if (err)
-                res.redirect('/artworks/details/daily')
-        })
 });
 
 router.get("/details/:id", (req, res, next) => {

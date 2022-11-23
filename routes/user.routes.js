@@ -1,6 +1,7 @@
 const rolesValidation = require('../middleware/roles.middleware');
 const { ADMIN } = require('../const/user.const');
 const UserModel = require('../models/User.model');
+const CommentModel = require('../models/Comment.model');
 const isLoggedIn = require('../middleware/isLoggedIn');
 const router = require('express').Router();
 const bcryptEdit = require('../function/bcryptEdit.function')
@@ -53,12 +54,15 @@ router.get("/edit/:id", rolesValidation(ADMIN), (req, res, next) => {
 
 router.get('/delete/:id', rolesValidation(ADMIN), (req, res, next) => {
     const { id } = req.params;
-    console.log(id);
 
     UserModel
         .findByIdAndDelete(id)
         .then(() => {
+            // CommentModel
+            //     .findByIdAndDelete({ user: String(id) })
+            //     .then(() => {
             res.redirect('/user/community');
+            // })
         })
         .catch(next);
 });

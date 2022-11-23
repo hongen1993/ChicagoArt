@@ -37,12 +37,12 @@
     <div class="col-2 grey">
         <h6>TAGS</h6>
         {{#each artwork.category_titles}}
-        <a href="" class="button-tag granatelink">{{this}}</a>
+        <a href="/search/{{this}}" class="button-tag granatelink">{{this}}</a>
         {{/each}}
     </div>
 </div>
 
-<div class="be-comment-block mx-5">
+<div class="be-comment-block mx-5" id="form-comment">
     {{#if comments}}
     <h1 class="comments-title">Comments ({{comments.length}})</h1>
     <div class="be-comment">
@@ -69,7 +69,7 @@
     </div>
     {{/if}}
     {{#if userNav}}
-    <form class="form-block mt-5" id="form-comment" action="/comment/{{artwork.id}}" method="post">
+    <form class="form-block mt-5" action="/comment/{{artwork.id}}" method="post">
         <div class="row">
             <div class="col-12">
                 <div class="form-group">

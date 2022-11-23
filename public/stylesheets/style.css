@@ -58,7 +58,7 @@ body {
   /* box-shadow: 8px 4px 4px #b4b7c1; */
 }
 
-.fixed-top.scrolled {
+.fixed-top .scrolled {
   background-color: #fff !important;
   transition: background-color 200ms linear;
 }
@@ -636,7 +636,7 @@ form .form-block a {
 
 .wrapper__footer {
   color: #ffffff;
-  background: #000;
+  background: rgba(26, 25, 25, 0.753);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -797,7 +797,7 @@ form .form-block a {
 
 .footer-title {
   padding: 1.5em 30em;
-  background-color: #000;
+  background: rgba(26, 25, 25, 0.753);
   color: white;
 }
 
