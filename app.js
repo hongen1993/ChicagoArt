@@ -4,18 +4,13 @@ require("./db");
 
 const express = require("express");
 
-const hbs = require("hbs");
-
 const app = express();
 
 require("./config")(app);
 
 require("./config/session.config")(app);
 
-hbs.registerPartials('views/partials');
-
 const projectName = "Chicago Art";
-
 
 app.locals.appTitle = `${projectName}`;
 

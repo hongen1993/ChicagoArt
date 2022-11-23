@@ -12,10 +12,9 @@ const session = require("express-session");
 
 const MongoStore = require("connect-mongo");
 
-const handlebars = require('hbs');
+const hbs = require("hbs");
 
-const MONGO_URI =
-  process.env.MONGODB_URI;
+const MONGO_URI = process.env.MONGODB_URI;
 
 module.exports = (app) => {
 
@@ -25,12 +24,14 @@ module.exports = (app) => {
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
 
+  hbs.registerPartials('views/partials');
+
   app.set("views", path.join(__dirname, "..", "views"));
   app.set("view engine", "hbs");
   app.use(express.static(path.join(__dirname, "..", "public")));
 
-  handlebars.registerHelper('paginate', require('handlebars-paginate'));
-  handlebars.registerHelper('dateFormat', require('handlebars-dateformat'));
+  hbs.registerHelper('paginate', require('handlebars-paginate'));
+  hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 
   app.use(
     favicon(path.join(__dirname, "..", "public", "images", "favicon.ico"))

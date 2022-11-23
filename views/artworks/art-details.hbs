@@ -71,18 +71,6 @@
     {{#if userNav}}
     <form class="form-block mt-5" id="form-comment" action="/comment/{{artwork.id}}" method="post">
         <div class="row">
-            {{!-- <div class=" col-sm-6">
-                <div class="form-group fl_icon">
-                    <div class="icon"><i class="fa fa-user"></i></div>
-                    <input class="form-input" type="text" placeholder="Your name">
-                </div>
-            </div>
-            <div class=" col-sm-6 fl_icon">
-                <div class="form-group fl_icon">
-                    <div class="icon"><i class="fa fa-envelope-o"></i></div>
-                    <input class="form-input" type="text" placeholder="Your email">
-                </div>
-            </div> --}}
             <div class="col-12">
                 <div class="form-group">
                     <textarea class="form-input" required="" placeholder="Your text" name="description"></textarea>
@@ -94,3 +82,5 @@
     </form>
     {{/if}}
 </div>
+
+{{> footer}}

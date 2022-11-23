@@ -37,14 +37,15 @@ router.get("/details/daily", (req, res, next) => {
         .getArtwork(randomNumber)
         .then((responseArtwork) => {
             const artwork = responseArtwork.data;
-            if (artwork) {
-                res.render("artworks/art-details", { artwork });
-            }
-            else {
-                res.redirect('/artworks/details/daily');
-            }
+            res.render("artworks/daily", { artwork });
         })
-        .catch(next);
+        .catch((err) => {
+            return err
+        })
+        .then((err) => {
+            if (err)
+                res.redirect('/artworks/details/daily')
+        })
 });
 
 router.get("/details/:id", (req, res, next) => {
