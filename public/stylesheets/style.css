@@ -58,7 +58,7 @@ body {
   /* box-shadow: 8px 4px 4px #b4b7c1; */
 }
 
-.fixed-top .scrolled {
+.scrolled {
   background-color: #fff !important;
   transition: background-color 200ms linear;
 }
@@ -224,6 +224,7 @@ hr.line {
   color: white;
 }
 
+
 .background-img img {
   padding: 1em;
 }
@@ -234,6 +235,18 @@ hr.line {
   z-index: 1;
   background-color: white;
   position: fixed;
+}
+
+.zoom-button {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}
+
+.display-none {
+  display: none
 }
 
 .button-tag {
@@ -256,6 +269,15 @@ hr.line {
 
 .granate {
   color: #a71c15
+}
+
+.zoomImage {
+  transform: scale(0.5);
+  padding-top: 0px
+}
+
+.positionOverlay {
+  top: 0;
 }
 
 /* Comment artwork */
@@ -594,7 +616,7 @@ form .form-block a {
 }
 
 .activity-item .activity-actions .dropdown-menu>li>a {
-  font-size: 0.9em;
+  font-size: 10.9em;
   padding: 3px 10px;
 }
 
@@ -602,9 +624,11 @@ form .form-block a {
   margin-bottom: 15px;
 }
 
-.tab-content {
-  padding: 30px 15px 15px 15px;
-  background-color: #fff;
+/* FAVOURITES */
+.favourite-form {
+  position: absolute;
+  right: 1.5em;
+  bottom: 1em;
 }
 
 /* COMMUNITY */
@@ -797,7 +821,7 @@ form .form-block a {
 
 .footer-title {
   padding: 1.5em 30em;
-  background: rgba(26, 25, 25, 0.753);
+  background: rgba(8, 8, 8, 0.9);
   color: white;
 }
 

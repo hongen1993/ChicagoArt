@@ -29,7 +29,10 @@ const userSchema = new Schema(
       enum: ENUM_ROLES,
       trim: true,
       default: USER
-    }
+    },
+    favourite: [{
+      type: String
+    }]
   },
   {
     timestamps: true,

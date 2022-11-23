@@ -67,6 +67,16 @@ router.get("/details/:id", (req, res, next) => {
         .catch(next);
 });
 
+/* router.get("/addFavorite/:id", (req, res, next) => {
+    const { id } = req.params
+    chicagoAPI
+        .getArtwork(id)
+        .then(artwork => {
+            UserModel.findByidAndUpdate(req.session.currentUser.id, {$push: })
+        })
+        .catch(next)
+}) */
+
 //-----------------------------------------------------------------------------POST------------------------------------------------------------------------------//
 
 router.post("/search", (req, res, next) => {

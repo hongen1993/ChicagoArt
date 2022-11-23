@@ -4,7 +4,7 @@ const UserModel = require('../models/User.model');
 const CommentModel = require('../models/Comment.model');
 const isLoggedIn = require('../middleware/isLoggedIn');
 const router = require('express').Router();
-const bcryptEdit = require('../function/bcryptEdit.function')
+const { validateData, validatePasswordLength, bcryptEdit, catchError } = require('../utils/bcryptEdit');
 
 //------------------------- GET --------------------------------
 router.get("/community", isLoggedIn, (req, res, next) => {
@@ -57,12 +57,12 @@ router.get('/delete/:id', rolesValidation(ADMIN), (req, res, next) => {
 
     UserModel
         .findByIdAndDelete(id)
-        .then(() => {
-            // CommentModel
-            //     .findByIdAndDelete({ user: String(id) })
-            //     .then(() => {
-            res.redirect('/user/community');
-            // })
+        .then((user) => {
+            CommentModel
+                .deleteMany({ user: user._id })
+                .then(() => {
+                    res.redirect('/user/community');
+                });
         })
         .catch(next);
 });
@@ -73,7 +73,15 @@ router.post("/edit-admin/:id", rolesValidation(ADMIN), (req, res, next) => {
     const { id } = req.params;
     const { username, email, password } = req.body;
 
-    bcryptEdit(req, res, next, id, username, email, password, "admin");
+    validateData(username, email, res, "admin");
+    validatePasswordLength(password, res, "admin");
+    bcryptEdit(id, username, email, password)
+        .then(() => {
+            res.redirect(req.get('referer'));
+        })
+        .catch((error) => catchError(error, res, next, "admin"));
+
+    //bcryptEdit(req, res, next, id, username, email, password, "admin");
 
 });
 
@@ -81,7 +89,17 @@ router.post("/edit-profile/:id", isLoggedIn, (req, res, next) => {
     const { id } = req.params;
     const { username, email, password } = req.body;
 
-    bcryptEdit(req, res, next, id, username, email, password, "profile");
+    validateData(username, email, res, "profile");
+    validatePasswordLength(password, res, "profile");
+    bcryptEdit(id, username, email, password)
+        .then((user) => {
+            req.session.currentUser = user.toObject();
+            delete req.session.currentUser.password;
+            res.redirect(req.get('referer'));
+        })
+        .catch((error) => catchError(error, res, next, "profile"));
+
+    //bcryptEdit(req, res, next, id, username, email, password, "profile");
 
 });
 

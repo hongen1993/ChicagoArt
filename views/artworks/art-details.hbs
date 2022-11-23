@@ -1,9 +1,19 @@
-<div class="card background-img padding-top mx-2">
+<div id="zoom" class="card background-img padding-top mx-2">
     <img class="card-img" src="https://www.artic.edu/iiif/2/{{artwork.image_id}}/full/843,/0/default.jpg"
         alt="{{artwork.title}}">
-    <div class="card-img-overlay d-flex flex-column justify-content-end">
-        <p class="card-title">{{artwork.title}}</p>
+    <div id="overlay" class="card-img-overlay d-flex flex-column justify-content-end">
+        <a href="#overlay" id="button-zo" class="btn btn-outline-light zoom-button text-center" onclick="zoomOut()">
+            <img src="../images/z-out.png" alt="zoom out">
+        </a>
+        <a href="#overlay" id="button-zi" class="btn btn-outline-light zoom-button text-center display-none"
+            onclick="zoomIn()">
+            <img src="../images/z-in.png" alt="zoom in">
+        </a>
+        <b class="card-title">{{artwork.title}}</b>
         <p class="card-subtitle mb-2">{{artwork.artist_title}}</p>
+        <form class="form-block favourite-form mt-5" action="/favourites/{{artwork.id}}" method="post">
+            <button type="submit">Favourite</button>
+        </form>
     </div>
 </div>
 <div class="row my-5 px-5">

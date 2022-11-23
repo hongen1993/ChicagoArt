@@ -10,4 +10,7 @@ module.exports = app => {
 
     app.use("/comment", require("./comment.routes"));
 
+    app.use("/favourites", require("./favourites.routes"));
+
+
 }
