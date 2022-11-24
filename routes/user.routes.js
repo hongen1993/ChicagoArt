@@ -91,12 +91,10 @@ router.post("/edit-admin/:id", rolesValidation(ADMIN), (req, res, next) => {
         })
         .catch((error) => catchError(error, res, next, "admin"));
 
-    //bcryptEdit(req, res, next, id, username, email, password, "admin");
-
 });
 
-router.post("/edit-profile/:id", isLoggedIn, (req, res, next) => {
-    const { id } = req.params;
+router.post("/edit-profile", isLoggedIn, (req, res, next) => {
+    const id = req.session.currentUser._id;
     const { username, email, password } = req.body;
 
     validateData(username, email, res, "profile");
@@ -108,9 +106,6 @@ router.post("/edit-profile/:id", isLoggedIn, (req, res, next) => {
             res.redirect(req.get('referer'));
         })
         .catch((error) => catchError(error, res, next, "profile"));
-
-    //bcryptEdit(req, res, next, id, username, email, password, "profile");
-
 });
 
 module.exports = router;

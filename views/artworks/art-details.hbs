@@ -1,11 +1,11 @@
-<div id="zoom" class="card background-img padding-top mx-2">
+<div id="zoom" class="card background-img margin-top mx-2">
     <img class="card-img" src="https://www.artic.edu/iiif/2/{{artwork.image_id}}/full/843,/0/default.jpg"
         alt="{{artwork.title}}">
     <div id="overlay" class="card-img-overlay d-flex flex-column justify-content-end">
-        <a href="#overlay" id="button-zo" class="btn btn-outline-light zoom-button text-center" onclick="zoomOut()">
+        <a href="#" id="button-zo" class="btn btn-outline-light zoom-button text-center" onclick="zoomOut()">
             <img class="zoom-images" src="../../images/z-out.png" alt="zoom out">
         </a>
-        <a href="#overlay" id="button-zi" class="btn btn-outline-light zoom-button text-center display-none"
+        <a href="#" id="button-zi" class="btn btn-outline-light zoom-button text-center display-none"
             onclick="zoomIn()">
             <img class="zoom-images" src="../../images/z-in.png" alt="zoom in">
         </a>
@@ -22,7 +22,10 @@
     <div class="col-2 grey">
         <h5 class="card-title">{{artwork.artist_display}}</h5>
         <hr>
-        <a href="" class="granate granatelink">SEE AUTHOR'S FILE</a>
+        <form action="/artworks/search" method="post">
+            <input type="hidden" value="{{artwork.artist_title}}" name="searchArtwork">
+            <button class="granate author-search" type="submit">SEE AUTHOR'S ARTWORKS</button>
+        </form>
     </div>
     <div class="col-6 text-center">
         <h2 class="granate mb-4">{{artwork.title}}</h2>

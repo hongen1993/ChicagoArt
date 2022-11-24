@@ -30,12 +30,6 @@ body {
   color: black;
 }
 
-.hero {
-  height: 119.7vh;
-  /* background-image: url(/images/banner.jpg);
-  background-size: 100% 100%; */
-}
-
 .event {
   position: relative;
   display: -ms-flexbox;
@@ -46,16 +40,14 @@ body {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, .125);
-  border-radius: 0.25rem;
   padding: 80px 80px;
 }
 
 .event-overlay {
   position: absolute;
-  top: -1px;
+  top: 0px;
   left: 0px;
-  height: 101%;
+  height: 100.2%;
   width: 100.5%;
   font-size: 1.5em;
   background-color: rgba(0, 0, 0, 0.3);
@@ -66,7 +58,7 @@ body {
 .event-info {
   position: relative;
   margin: 200px 0 0 100px;
-  top: 20%;
+  top: 10%;
   color: white;
   height: 300px;
   width: 350px;
@@ -115,7 +107,9 @@ body {
 .padding-top {
   padding-top: 99px;
 }
-
+.margin-top{
+  margin-top:99px;
+}
 .form-control {
   box-shadow: none;
   border-radius: 4px;
@@ -283,13 +277,25 @@ hr.line {
   margin: 0 .5rem .5rem .5rem;
 
 }
-
 .card {
   background-color: rgba(237, 239, 242, 0.4)
 }
 
+.scale-card{
+  transition: 1s;
+}
+
+.scale-card:hover {
+  transform: scale(1.075);
+  z-index: 100;
+}
+
+.scale-card:hover a{
+    background-color: rgba(237, 239, 242, .7)
+}
+
 .card-img-overlay {
-  top: 100px;
+  top: 0;
   padding: 0 0 1.5em 2em;
   font-size: 1.7em;
   color: rgba(0, 0, 0, 0);
@@ -323,6 +329,10 @@ hr.line {
   padding: .8em;
 }
 
+.tab-pane .row{
+  width: 73em;
+}
+
 .favourite-form button:hover {
   background-color: rgba(0, 0, 0, 0);
 }
@@ -331,8 +341,18 @@ hr.line {
   transform: scale(1.5);
 }
 
+.author-search{
+  border: none;
+  background-color:rgba(0, 0, 0, 0);
+}
+
+.author-search:hover {
+  text-decoration: underline;
+}
+
 .button-tag {
   display: block;
+  background-color: rgba(0, 0, 0, 0);
   border: 1px solid #9d9d9d;
   color: #a71c15;
   text-align: center;
@@ -341,8 +361,8 @@ hr.line {
   text-decoration: none;
 }
 
-.granatelink:hover {
-  color: #a71c15;
+.button-tag:hover {
+text-decoration: underline;
 }
 
 .grey {
@@ -354,8 +374,9 @@ hr.line {
 }
 
 .zoomImage {
-  transform: scale(0.5);
-  padding-top: 0px
+  width:46%;
+  margin-left: auto!important;
+  margin-right: auto!important;
 }
 
 .zoom-button {

@@ -32,6 +32,12 @@ module.exports = (app) => {
 
   hbs.registerHelper('paginate', require('handlebars-paginate'));
   hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
+  hbs.registerHelper('ifCond', function (v1, v2, options) {
+    if (String(v1) === String(v2)) {
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  });
 
   app.use(
     favicon(path.join(__dirname, "..", "public", "images", "favicon.ico"))

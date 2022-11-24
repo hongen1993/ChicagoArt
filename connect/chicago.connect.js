@@ -16,7 +16,7 @@ class ChicagoAPI {
     }
 
     searchArtworks(searchArtwork) {
-        return this.axios.get(`/artworks/search?q=${searchArtwork}&fields=id,title,image_id,artist_title`).then((response) => response.data)
+        return this.axios.get(`/artworks/search?q=${searchArtwork}&fields=id,title,image_id,artist_title&limit=20`).then((response) => response.data)
     }
     getEvent(id) {
         return this.axios.get(`/events/${id}`).then((response) => response.data)
