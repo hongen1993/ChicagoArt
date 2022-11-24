@@ -3,16 +3,18 @@
         alt="{{artwork.title}}">
     <div id="overlay" class="card-img-overlay d-flex flex-column justify-content-end">
         <a href="#overlay" id="button-zo" class="btn btn-outline-light zoom-button text-center" onclick="zoomOut()">
-            <img src="../images/z-out.png" alt="zoom out">
+            <img class="zoom-images" src="../../images/z-out.png" alt="zoom out">
         </a>
         <a href="#overlay" id="button-zi" class="btn btn-outline-light zoom-button text-center display-none"
             onclick="zoomIn()">
-            <img src="../images/z-in.png" alt="zoom in">
+            <img class="zoom-images" src="../../images/z-in.png" alt="zoom in">
         </a>
         <b class="card-title">{{artwork.title}}</b>
         <p class="card-subtitle mb-2">{{artwork.artist_title}}</p>
         <form class="form-block favourite-form mt-5" action="/favourites/{{artwork.id}}" method="post">
-            <button type="submit">Favourite</button>
+            <input type="hidden" value="{{artwork.title}}" name="title">
+            <input type="hidden" value="{{artwork.image_id}}" name="imageUrl">
+            <button class="btn" type="submit"><img src="/images/favourites.png" alt=""></button>
         </form>
     </div>
 </div>
@@ -47,7 +49,10 @@
     <div class="col-2 grey">
         <h6>TAGS</h6>
         {{#each artwork.category_titles}}
-        <a href="/search/{{this}}" class="button-tag granatelink">{{this}}</a>
+        <form action="/artworks/search" method="post">
+            <input type="hidden" value="{{this}}" name="searchArtwork">
+            <button class="button-tag granatelink" type="submit">{{this}}</button>
+        </form>
         {{/each}}
     </div>
 </div>

@@ -1,7 +1,10 @@
 const rolesValidation = require('../middleware/roles.middleware');
 const { ADMIN } = require('../const/user.const');
+
 const UserModel = require('../models/User.model');
 const CommentModel = require('../models/Comment.model');
+const FavouriteModel = require('../models/Favourite.model')
+
 const isLoggedIn = require('../middleware/isLoggedIn');
 const router = require('express').Router();
 const { validateData, validatePasswordLength, bcryptEdit, catchError } = require('../utils/bcryptEdit');
@@ -36,7 +39,14 @@ router.get("/profile/:id", isLoggedIn, (req, res, next) => {
     UserModel
         .findById(id)
         .then((user) => {
-            res.render('user/profile', user);
+            return user
+        })
+        .then((user) => {
+            FavouriteModel
+                .find({ userId: user.id })
+                .then((favourites) => {
+                    res.render('user/profile', { user, favourites })
+                })
         })
         .catch(next);
 });

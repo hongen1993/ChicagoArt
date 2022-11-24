@@ -30,9 +30,6 @@ const userSchema = new Schema(
       trim: true,
       default: USER
     },
-    favourite: [{
-      type: String
-    }]
   },
   {
     timestamps: true,

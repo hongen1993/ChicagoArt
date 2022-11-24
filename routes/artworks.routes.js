@@ -5,6 +5,7 @@ const ChicagoAPI = require('../connect/chicago.connect')
 const chicagoAPI = new ChicagoAPI()
 
 const CommentModel = require('../models/Comment.model');
+
 //-----------------------------------------------------------------------------GET--------------------------------------------------------------------------------//
 
 router.get("/details/daily", (req, res, next) => {
@@ -66,16 +67,6 @@ router.get("/details/:id", (req, res, next) => {
         })
         .catch(next);
 });
-
-/* router.get("/addFavorite/:id", (req, res, next) => {
-    const { id } = req.params
-    chicagoAPI
-        .getArtwork(id)
-        .then(artwork => {
-            UserModel.findByidAndUpdate(req.session.currentUser.id, {$push: })
-        })
-        .catch(next)
-}) */
 
 //-----------------------------------------------------------------------------POST------------------------------------------------------------------------------//
 

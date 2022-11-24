@@ -2,10 +2,9 @@ const { Schema, model } = require("mongoose");
 
 const favouriteSchema = new Schema(
     {
-        imageUrl: String,
         title: String,
-        autor: String,
-        user: { type: Schema.Types.ObjectId, ref: 'User' },
+        imageUrl: String,
+        userId: String,
         artworkId: String
     },
     {

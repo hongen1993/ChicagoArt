@@ -14,12 +14,25 @@
     </div>
 </main>
 
+<div class="event">
+    <img src="{{image_url}}" alt="event image">
+    <div class="event-overlay">
+        <div class="event-info">
+            <h6>Event</h6>
+            <p>{{title}}</p>
+            <p>{{location}} {{start_time}}-{{end_time}}</p>
+            <a class="ticket" href="{{rsvp_link}}">buy tickets<img src="/images/ticket.png" alt="ticket"></a>
+        </div>
+    </div>
+</div>
+
+
 <div class="text-center footer-title">
     <h5>Art Institute of Chicago</h5>
 </div>
 <iframe class="map-frame"
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11461.18689958448!2d-87.62181239763302!3d41.879352149640134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2ca3e2d94695%3A0x4829f3cc9ca2d0de!2sInstituto%20de%20Arte%20de%20Chicago!5e0!3m2!1ses!2ses!4v1669165939819!5m2!1ses!2ses"
-    height="400" style="border:0;" allowfullscreen="" loading="lazy"
+    height="300" style="border:0;" allowfullscreen="" loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 {{> footer}}
