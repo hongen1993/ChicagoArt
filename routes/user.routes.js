@@ -3,13 +3,12 @@ const { ADMIN } = require('../const/user.const');
 
 const UserModel = require('../models/User.model');
 const CommentModel = require('../models/Comment.model');
-const FavouriteModel = require('../models/Favourite.model')
 
 const isLoggedIn = require('../middleware/isLoggedIn');
 const router = require('express').Router();
 const { validateData, validatePasswordLength, bcryptEdit, catchError } = require('../utils/bcryptEdit');
 
-//------------------------- GET --------------------------------
+//------------------------- GET --------------------------------//
 router.get("/community", isLoggedIn, (req, res, next) => {
 
     UserModel
@@ -39,14 +38,7 @@ router.get("/profile/:id", isLoggedIn, (req, res, next) => {
     UserModel
         .findById(id)
         .then((user) => {
-            return user
-        })
-        .then((user) => {
-            FavouriteModel
-                .find({ userId: user.id })
-                .then((favourites) => {
-                    res.render('user/profile', { user, favourites })
-                })
+            res.render('user/profile', { user })
         })
         .catch(next);
 });
@@ -77,21 +69,19 @@ router.get('/delete/:id', rolesValidation(ADMIN), (req, res, next) => {
         .catch(next);
 });
 
-//---------------------------------- POST --------------------------------------
-
-router.post("/edit-admin/:id", rolesValidation(ADMIN), (req, res, next) => {
+router.get('/following/delete/:id', isLoggedIn, (req, res, next) => {
     const { id } = req.params;
-    const { username, email, password } = req.body;
+    const userProfileId = req.session.currentUser._id;
 
-    validateData(username, email, res, "admin");
-    validatePasswordLength(password, res, "admin");
-    bcryptEdit(id, username, email, password)
+    UserModel
+        .findByIdAndUpdate(userProfileId, { $pull: { following: { followingId: id } } })
         .then(() => {
-            res.redirect(req.get('referer'));
+            res.redirect(`/user/profile/${userProfileId}`);
         })
-        .catch((error) => catchError(error, res, next, "admin"));
-
+        .catch(next);
 });
+
+//---------------------------------- POST --------------------------------------
 
 router.post("/edit-profile", isLoggedIn, (req, res, next) => {
     const id = req.session.currentUser._id;
@@ -107,5 +97,43 @@ router.post("/edit-profile", isLoggedIn, (req, res, next) => {
         })
         .catch((error) => catchError(error, res, next, "profile"));
 });
+
+router.post('/following/:id', isLoggedIn, (req, res, next) => {
+    const { id } = req.params
+    const { username, imageUrl } = req.body
+    const userProfileId = req.session.currentUser._id
+
+    UserModel
+        .findById(userProfileId)
+        .then((user) => {
+            const validateId = user.following.filter((e) => e.followingId === id);
+            if (validateId.length === 0) {
+                UserModel
+                    .findByIdAndUpdate(userProfileId, { $push: { following: { username, imageUrl: imageUrl, followingId: id } } }, { new: true })
+                    .then(() => {
+                        res.redirect(`/user/community`);
+                    })
+                    .catch(next);
+            } else {
+                res.redirect(`/user/community`);
+            }
+        });
+
+})
+
+router.post("/edit-admin/:id", rolesValidation(ADMIN), (req, res, next) => {
+    const { id } = req.params;
+    const { username, email, password } = req.body;
+
+    validateData(username, email, res, "admin");
+    validatePasswordLength(password, res, "admin");
+    bcryptEdit(id, username, email, password)
+        .then(() => {
+            res.redirect(req.get('referer'));
+        })
+        .catch((error) => catchError(error, res, next, "admin"));
+});
+
+
 
 module.exports = router;

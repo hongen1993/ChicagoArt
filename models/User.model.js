@@ -21,9 +21,17 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    interests: {
-      type: String
-    },
+    favourites: [{
+      title: String,
+      imageUrl: String,
+      userId: String,
+      artworkId: String
+    }],
+    following: [{
+      username: String,
+      imageUrl: String,
+      followingId: String
+    }],
     role: {
       type: String,
       enum: ENUM_ROLES,

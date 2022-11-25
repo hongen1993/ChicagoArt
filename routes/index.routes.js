@@ -11,7 +11,6 @@ router.get('/', (req, res, next) => {
   chicagoAPI
     .getEvent(id)
     .then((eventResponse) => {
-      console.log(eventResponse.data.image_url)
       const event = eventResponse.data;
       res.render('index', event)
     })

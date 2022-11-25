@@ -81,6 +81,51 @@ body {
   margin-bottom: 30px;
 }
 
+.hero {
+  position: relative;
+}
+
+.hero video {
+  position: relative;
+  z-index: 0;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.index-search {
+  width: 40%;
+  height: 10%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.video-form {
+  background-color: white;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 4px;
+}
+
+.video-form input {
+  height: 40px;
+  font-size: 18px;
+}
+
+.video-form button {
+  background-color: transparent;
+  border: none;
+}
+
 .ticket {
   text-decoration: none;
   color: white;
@@ -107,13 +152,16 @@ body {
 .padding-top {
   padding-top: 99px;
 }
-.margin-top{
-  margin-top:99px;
+
+.margin-top {
+  margin-top: 99px;
 }
+
 .form-control {
   box-shadow: none;
   border-radius: 4px;
-  font-size: .8rem
+  font-size: .8rem;
+  height: 40px;
 }
 
 .navbar {
@@ -130,7 +178,6 @@ body {
 
 .scrolled {
   background-color: #fff !important;
-  transition: background-color 200ms linear;
 }
 
 .navbar-index {
@@ -191,8 +238,12 @@ body {
   color: black;
 }
 
+.nav-bar-width {
+  width: 40em;
+}
+
 .search-form {
-  padding: 14px 0 0 40rem;
+  padding: 14px 0 0 35rem;
 }
 
 .search-box {
@@ -277,11 +328,16 @@ hr.line {
   margin: 0 .5rem .5rem .5rem;
 
 }
+
 .card {
   background-color: rgba(237, 239, 242, 0.4)
 }
 
-.scale-card{
+.card-signup {
+  background-color: white;
+}
+
+.scale-card {
   transition: 1s;
 }
 
@@ -290,8 +346,8 @@ hr.line {
   z-index: 100;
 }
 
-.scale-card:hover a{
-    background-color: rgba(237, 239, 242, .7)
+.scale-card:hover a {
+  background-color: rgba(237, 239, 242, .7)
 }
 
 .card-img-overlay {
@@ -305,7 +361,6 @@ hr.line {
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
 }
-
 
 .background-img img {
   padding: 1em;
@@ -329,7 +384,49 @@ hr.line {
   padding: .8em;
 }
 
-.tab-pane .row{
+.favourite-form button:focus {
+  outline: 0 !important;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.following-form {
+  position: absolute;
+  right: 0;
+  bottom: 12px;
+}
+
+.following-form button img {
+  transition: transform .3s;
+  width: 50px;
+  padding: .8em;
+}
+
+.following-form button:focus {
+  outline: 0 !important;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.following-form button:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.following-form button:hover img {
+  transform: scale(1.5);
+}
+
+.tab-pane .row {
   width: 73em;
 }
 
@@ -341,9 +438,9 @@ hr.line {
   transform: scale(1.5);
 }
 
-.author-search{
+.author-search {
   border: none;
-  background-color:rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .author-search:hover {
@@ -362,7 +459,7 @@ hr.line {
 }
 
 .button-tag:hover {
-text-decoration: underline;
+  text-decoration: underline;
 }
 
 .grey {
@@ -374,9 +471,9 @@ text-decoration: underline;
 }
 
 .zoomImage {
-  width:46%;
-  margin-left: auto!important;
-  margin-right: auto!important;
+  width: 46%;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .zoom-button {
@@ -534,6 +631,12 @@ form .form-block a {
   background-size: auto 100%;
 }
 
+.login-form .btn-info,
+.signup-form .btn-info {
+  background-color: #525151;
+  color: white !important;
+}
+
 .card-login {
   background-color: rgba(255, 255, 255, .2);
   border-radius: 15px;
@@ -594,8 +697,25 @@ form .form-block a {
   transform: scale(1.05);
 }
 
+.tab-pane h5 {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
 .shadow {
   border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.active {
+  border-bottom: 5px solid rgba(202, 198, 190, 0.9);
+}
+
+#favourites {
+  border-bottom: none;
+}
+
+#following {
+  border-bottom: none;
 }
 
 .favourite:hover {
@@ -614,70 +734,6 @@ form .form-block a {
 
 .favourite-delete img {
   width: 28px;
-}
-
-@media screen and (max-width: 768px) {
-  .profile-info-right {
-    position: relative;
-    top: -70px;
-  }
-}
-
-.user-follower,
-.user-following {
-  position: relative;
-  margin-bottom: 40px;
-}
-
-.user-follower img,
-.user-following img {
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  width: 40px;
-}
-
-.user-follower a,
-.user-following a {
-  font-size: 1.1em;
-  line-height: 1;
-}
-
-.user-follower .username,
-.user-following .username {
-  font-size: 0.9em;
-  line-height: 1.5;
-}
-
-.user-follower .btn,
-.user-following .btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 92px;
-}
-
-.btn-toggle-following {
-  background-color: #7bae16;
-  color: #fff;
-}
-
-.btn-toggle-following:hover {
-  background-color: #ef2020;
-  color: #fff;
-}
-
-.btn-toggle-following:hover span {
-  display: none;
-}
-
-.btn-toggle-following:hover:after {
-  content: 'Unfollow';
-  display: inline;
-}
-
-.btn-toggle-following:hover i:before {
-  content: '\f129';
 }
 
 /* FAVOURITES */

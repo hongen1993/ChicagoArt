@@ -15,6 +15,11 @@
                         <p class="card-text"><small class="text-muted">{{email}}</small></p>
                     </div>
                 </a>
+                <form class="form-block following-form mt-5" action="/user/following/{{_id}}" method="post">
+                    <input type="hidden" value="{{username}}" name="username">
+                    <input type="hidden" value="{{imageUrl}}" name="imageUrl">
+                    <button class="btn" type="submit"><img src="/images/favourites.png" alt=""></button>
+                </form>
                 {{#if @root.admin}}
                 <div class="btn-admin-container">
                     <a class="btn btn-primary btn-admin" href="/user/edit/{{id}}">Edit</a>

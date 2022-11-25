@@ -1,6 +1,6 @@
 window.onscroll = function () {
     const navbar = document.getElementById("navbar")
-    window.scrollY > 10 ? navbar.classList.add("scrolled") : navbar.classList.remove("scrolled")
+    window.scrollY > 5 ? navbar.classList.add("scrolled") : navbar.classList.remove("scrolled")
 }
 
 function zoomOut() {

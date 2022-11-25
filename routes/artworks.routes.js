@@ -62,6 +62,15 @@ router.get("/details/:id", (req, res, next) => {
                 .sort("-createdAt")
                 .populate({ path: "user", select: ["username", "imageUrl"] })
                 .then((comments) => {
+                    if (artwork.provenance_text != null) {
+                        let provenance = artwork.provenance_text.split(";");
+                        let description = "";
+                        for (let i = 0; i < provenance.length; i++) {
+                            description += provenance[i].split("[")[0]
+                            if (i < provenance.length - 1) { description += "," }
+                        }
+                        artwork.provenance_text = description.replace(/[\[\]']+/g, " ");
+                    }
                     res.render("artworks/art-details", { artwork, comments });
                 })
         })

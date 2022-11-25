@@ -10,36 +10,39 @@
                         <h3>About Me</h3>
                         <p>Name: {{user.username}}</p>
                         <p>Email: {{user.email}}</p>
-                        <p>My interests: {{user.interests}}</p>
                     </div>
                     <div class="section">
                         <h3>Statistics</h3>
-                        <p><span class="badge">{{favourites.length}}</span> Favourite artworks</p>
-                        <p><span class="badge">12</span> Following</p>
+                        <p><span class="badge">{{user.favourites.length}}</span> Favourite artworks</p>
+                        <p><span class="badge">{{user.following.length}}</span> Following</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="profile-info-right">
                     <ul class="nav mt-3">
-                        <li class="ml-2 mr-auto"><a class="favourite btn shadow " href="#favourites"
+                        <li class="ml-2 mr-auto"><a class="favourite btn shadow active" href="#favourites"
                                 data-toggle="tab">FAVOURITES</a></li>
                         <li class="mr-2 ml-auto"><a class="following btn shadow" href="#following"
                                 data-toggle="tab">FOLLOWING</a>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane fade in show active" id="favourites">
+                        <div class="tab-pane fade in show active text-center" id="favourites">
+                            <h5 class="text-decoration-underline">Favourites</h5>
                             <div class="row">
-                                {{#each favourites}}
+                                {{#each user.favourites}}
                                 <div class=" mt-4 pt-3 col-3">
                                     <div class="card">
                                         {{#ifCond @root.user._id @root.currentUser._id }}
-                                        <a class="favourite-delete" href="/favourites/delete/{{id}}"><img src="/images/remove.png" alt="remove"></a>
+                                        <a class="favourite-delete" href="/favourites/delete/{{artworkId}}"><img
+                                                src="/images/remove.png" alt="remove"></a>
                                         {{/ifCond}}
                                         <a class="link-to-details" href="/artworks/details/{{artworkId}}">
-                                            <img class="card-img-top" src="https://www.artic.edu/iiif/2/{{imageUrl}}/full/843,/0/default.jpg" alt="artwork img"
-                                                class="media-object avatar">
+                                            <div style="height: 200px;overflow: hidden;"><img class="card-img-top"
+                                                    src="https://www.artic.edu/iiif/2/{{imageUrl}}/full/843,/0/default.jpg"
+                                                    alt="artwork img" class="media-object avatar">
+                                            </div>
                                             <div class="card-body">
                                                 <p class="card-text text-center">{{title}}</p>
                                             </div>
@@ -50,15 +53,27 @@
                             </div>
                         </div>
                         <!-- following -->
-                        <div class="tab-pane fade" id="following">
-                            <div class="media user-follower">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User Avatar"
-                                    class="media-object pull-left">
-                                <div class="media-body">
-                                    <a href="#">Antonius<br><span class="text-muted username">@mrantonius</span></a>
-                                    <button type="button" class="btn btn-sm btn-toggle-following pull-right"><i
-                                            class="fa fa-checkmark-round"></i> <span>Following</span></button>
+                        <div class="tab-pane fade text-center" id="following">
+                            <h5 class="text-decoration-underline">Following</h5>
+                            <div class="row">
+                                {{#each user.following}}
+                                <div class=" mt-4 pt-3 col-3">
+                                    <div class="card">
+                                        {{#ifCond @root.user._id @root.currentUser._id }}
+                                        <a class="favourite-delete" href="/user/following/delete/{{followingId}}"><img
+                                                src="/images/remove.png" alt="remove"></a>
+                                        {{/ifCond}}
+                                        <a class="link-to-details" href="/user/profile/{{followingId}}">
+                                            <div style="height: 200px;overflow: hidden;"><img class="card-img-top"
+                                                    src="{{imageUrl}}" alt="artwork img" class="media-object avatar">
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text text-center">{{username}}</p>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
+                                {{/each}}
                             </div>
                         </div>
                     </div>
