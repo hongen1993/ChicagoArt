@@ -2,8 +2,12 @@
   "name": "starter-code",
   "version": "0.0.0",
   "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "dev": "nodemon server.js"
   },
   "dependencies": {
